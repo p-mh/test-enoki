@@ -7,6 +7,7 @@ Vous trouverez les fichiers JSON pour simuler les responses du backend dans /src
 
 Une application web permettant de visualiser et ajouter différents assets financiers dans son portfolio afin de pouvoir en consulter le solde et l’évolution à tout moment.
 
+Pas de bibliothèque obligatoire à part React
 
 
 ## Page 1 - Dashboard
