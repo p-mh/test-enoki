@@ -2,51 +2,26 @@
   {
     "id": "ETH",
     "name": "Etherum",
-    "quantity": 365,
-    "entry_date": "2021-04-13T11:32:31.915000+02:00",
-    "buy_price": 321,
-    "actual_price": 632,
-    "variation": "+98.00%",
     "logo": "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-logos-vector-eps-cdr-svg-download-10.png"
   },
   {
     "id": "USDCOIN",
     "name": "USD Coin",
-    "quantity": 8,
-    "entry_date": "2021-04-13T11:32:31.915000+02:00",
-    "buy_price": 446,
-    "actual_price": 825,
-    "variation": "-5.69%",
     "logo": "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-logos-vector-eps-cdr-svg-download-10.png"
   },
   {
     "id": "AAVE",
     "name": "Aave",
-    "quantity": 64,
-    "entry_date": "2021-04-13T11:32:31.915000+02:00",
-    "buy_price": 1158,
-    "actual_price": 11458,
-    "variation": "+63.00%",
     "logo": "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-logos-vector-eps-cdr-svg-download-10.png"
   },
   {
     "id": "DASH",
     "name": "Dash",
-    "quantity": 41,
-    "entry_date": "2021-04-13T11:32:31.915000+02:00",
-    "buy_price": 558,
-    "actual_price": 9541,
-    "variation": "+4.50%",
     "logo": "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-logos-vector-eps-cdr-svg-download-10.png"
   },
   {
     "id": "ELROND",
     "name": "Elrond",
-    "quantity": 16,
-    "entry_date": "2021-04-13T11:32:31.915000+02:00",
-    "buy_price": 224,
-    "actual_price": 2254,
-    "variation": "-25.52%",
     "logo": "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-logos-vector-eps-cdr-svg-download-10.png"
   }
 ]
