@@ -1,8 +1,13 @@
-# Test Enoki - Investissement / Finance
+# Test Enoki - Frontend Developpement
 
 ## Sujet
 
+À partir de ces données créer une application React. 
+Vous trouverez les fichiers JSON pour simuler les responses du backend dans /src/data
+
 Une application web permettant de visualiser et ajouter différents assets financiers dans son portfolio afin de pouvoir en consulter le solde et l’évolution à tout moment.
+
+
 
 ## Page 1 - Dashboard
 
