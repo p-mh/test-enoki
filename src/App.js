@@ -6,13 +6,17 @@ import Assets from './components/Assets'
 
 const StyledApp = styled.div`
   font-family: 'Poppins', sans-serif;
+  background-color: #1C1C1E;
+  color: #ffffff;
+  min-height: 100vh;
 `
 
 function App() {
   return (
     <StyledApp className="App">
+      <div>Menu</div>
       <BrowserRouter>
-        <NavBar/>
+        <NavBar />
         <Route exact path="/" activeClassName="current" component={Dashboard} />
         <Route path="/assets" activeClassName="current" component={Assets} />
       </BrowserRouter>
