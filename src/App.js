@@ -1,21 +1,22 @@
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+import styled from 'styled-components';
+import NavBar from './components/NavBar'
 import Dashboard from './components/Dashboard'
 import Assets from './components/Assets'
 
+const StyledApp = styled.div`
+  font-family: 'Poppins', sans-serif;
+`
+
 function App() {
   return (
-    <div className="App">
+    <StyledApp className="App">
       <BrowserRouter>
-        <div>
-          <ul>
-            <li><Link to="/">Dashboard</Link></li>
-            <li><Link to="/assets">Assets</Link></li>
-          </ul>
-        </div>
-        <Route exact path="/" component={Dashboard} />
-        <Route path="/assets" component={Assets} />
+        <NavBar/>
+        <Route exact path="/" activeClassName="current" component={Dashboard} />
+        <Route path="/assets" activeClassName="current" component={Assets} />
       </BrowserRouter>
-    </div >
+    </StyledApp >
   );
 }
 
