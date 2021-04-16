@@ -11,3 +11,8 @@ export const PageTitle = styled.h1`
     font-size: 1em;
     font-weight: 400;
 `
+
+export const MaterialIcon = styled.span`
+    font-family: 'Material Icons';
+    font-weight:400;
+`

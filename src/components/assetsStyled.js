@@ -23,6 +23,25 @@ export const AddAssetButton = styled.button`
     }
 `
 
+export const Search = styled.div`
+    display: flex;
+    justify-content: flex-end;
+`
+export const SearchIcon = styled.div`
+    font-size: 1.3em;
+`
+
+export const SearchBar = styled.input`
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: 800;
+    text-align: right;
+    width: 150px;
+`
+
 export const AssetsTable = styled.table`
     width: 100%;
     border-collapse: collapse;
@@ -50,5 +69,5 @@ export const AssetLogo = styled.img`
 `
 
 export const AssetVariation = styled.p`
-    color: ${({isPositive})=> isPositive ? '#4F9C0F' : '#D63F31'}
+    color: ${({ isPositive }) => isPositive ? '#4F9C0F' : '#D63F31'}
 `
