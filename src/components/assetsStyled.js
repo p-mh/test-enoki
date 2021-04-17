@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const AssetsHead = styled.div`
     display: flex;
@@ -8,16 +9,18 @@ export const AssetsHead = styled.div`
 export const AssetsTitle = styled.h2`
     margin-right: 20px;
 `
-export const AddAssetButton = styled.button`
+export const AddAssetButton = styled(NavLink)`
     width: 40px;
     height: 40px;
     border-radius: 50%;
     border: none;
     background-color: #5E5CE6;
     color: #ffffff;
-    font-size: 1.5em;
+    font-size: 1.69em;
     font-weight: 600;
     outline: none;
+    text-decoration: none;
+    text-align: center;
     &:hover{
         background-color: #868686;
     }
@@ -47,7 +50,7 @@ export const AssetsTable = styled.table`
     border-collapse: collapse;
 `
 export const AssetsRow = styled.tr`
-    border-bottom: #868686 1px solid;
+    border-bottom: #444444 1px solid;
     height: 80px;
     &:last-child {
         border: none;

@@ -10,7 +10,7 @@ export default function NavBar() {
                     <StyledLink exact to="/">Dashboard</StyledLink>
                 </NavBarItem>
                 <NavBarItem>
-                    <StyledLink exact to="/assets">Assets</StyledLink>
+                    <StyledLink to="/assets">Assets</StyledLink>
                 </NavBarItem>
             </NavBarList>
         </NavBarStyled>

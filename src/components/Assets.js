@@ -27,8 +27,10 @@ export default class Assets extends Component {
     }
 
     render() {
+        console.log(this.props.location.state)
         const { assets, search } = this.state;
-        const showAssets = assets.map(({ id, name, quantity, entry_date, buy_price, actual_price, variation, logo }) => {
+        const allAssets = (this.props.location.state && [this.props.location.state.newAsset, ...assets]) || assets; //This is needed to show the new asset when it's add, but, with a backend, it will simply get the assets.
+        const showAssets = allAssets.map(({ id, name, quantity, entry_date, buy_price, actual_price, variation, logo }) => {
             return <AssetsRow key={id}>
                 <AssetData><AssetLogo src={logo} /></AssetData>
                 <AssetData><p>{id}</p></AssetData>
@@ -37,7 +39,7 @@ export default class Assets extends Component {
                 <AssetData><p>{moment(entry_date).format("DD/MM/YY")}</p></AssetData>
                 <AssetData><p>{buy_price}</p></AssetData>
                 <AssetData><p>{actual_price}</p></AssetData>
-                <AssetData><AssetVariation isPositive={variation.charAt(0) === "+"}>{variation}</AssetVariation></AssetData>
+                <AssetData><AssetVariation isPositive={variation && variation.charAt(0) === "+"}>{variation}</AssetVariation></AssetData>
             </AssetsRow>
         })
         const keyPress = (e) => {
@@ -50,7 +52,7 @@ export default class Assets extends Component {
                 <PageTitle>Assets</PageTitle>
                 <AssetsHead>
                     <AssetsTitle>Tracking of your assets</AssetsTitle>
-                    <AddAssetButton onClick={() => console.log('add asset')}>+</AddAssetButton>
+                    <AddAssetButton to="/assets/add">+</AddAssetButton>
                 </AssetsHead>
                 <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dolor elit, commodo non condimentum non, consequat nec massa. Maecenas id sollicitudin tellus. Proin hendrerit aliquet ante sed facilisis. Vestibulum condimentum accumsan accumsan. Pellentesque auctor nibh ligula, et iaculis enim sollicitudin et. Sed vitae molestie felis. </p></div>
                 <Search>
