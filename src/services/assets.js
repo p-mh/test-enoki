@@ -11,7 +11,6 @@ const filterAssets = (assets, filter) => {
 }
 
 export const fetchAssets = (filter) => {
-    console.log(filter);
     const assets = assetsData;
     const filteredAssets = filterAssets(assets, filter)
     return filteredAssets;
