@@ -23,11 +23,10 @@ export default class Assets extends Component {
     }
 
     searchAssets = (value) => {
-        this.setState({ search: value });
+        this.setState({ search: value }, ()=>this.getAssets());
     }
 
     render() {
-        console.log(this.props.location.state)
         const { assets, search } = this.state;
         const allAssets = (this.props.location.state && [this.props.location.state.newAsset, ...assets]) || assets; //This is needed to show the new asset when it's add, but, with a backend, it will simply get the assets.
         const showAssets = allAssets.map(({ id, name, quantity, entry_date, buy_price, actual_price, variation, logo }) => {
