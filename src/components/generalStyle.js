@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 export const Page = styled.div`
     padding: 40px;
+    width: inherit;
 `
 
 export const PageTitle = styled.h1`
