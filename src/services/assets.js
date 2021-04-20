@@ -12,12 +12,14 @@ const filterAssets = (assets, filter) => {
 
 export const fetchAssets = (filter) => {
     const assets = assetsData;
+    // Here I just take it from json file. So I don't need async/await, but if we have a back I should have use it.
     const filteredAssets = filterAssets(assets, filter)
     return filteredAssets;
 }
 
 export const fetchSuggestion = (search) => {
     const suggestions = assetsSuggestions;
+    // Here I just take it from json file. So I don't need async/await, but if we have a back I should have use it
     const filteredSuggestions = filterAssets(suggestions, search);
     return filteredSuggestions;
 }

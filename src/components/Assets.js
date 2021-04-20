@@ -23,7 +23,9 @@ export default class Assets extends Component {
     }
 
     searchAssets = (value) => {
-        this.setState({ search: value }, ()=>this.getAssets());
+        this.setState({ search: value }, ()=> this.getAssets());
+        // With a backend, I should use a debounce function to avoid call backend to much repeatedly.
+        // Here I don't need it because call a small json to each value change file is not a real problem. 
     }
 
     render() {

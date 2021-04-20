@@ -22,6 +22,8 @@ export default class AddAsset extends Component {
         const { nameSearch } = this.state;
         const suggestionsName = fetchSuggestion(nameSearch);
         this.setState({ suggestionsName });
+        // With a backend, I should use a debounce function to avoid call backend to much repeatedly.
+        // Here I don't need it because call a small json to each value change file is not a real problem.
     }
 
     changeValue = (inputName, value) => this.setState({ [inputName]: value }, () => (inputName === "nameSearch") && this.getSuggestion())

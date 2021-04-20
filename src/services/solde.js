@@ -7,10 +7,10 @@ const areDatesSameMonth = (dates) => {
 }
 
 const formatSolde = (solde, dates) => {
+    // Format data in order to use with chartjs
     const { from, to } = dates;
     const filteredData = solde
         .filter(({ date }) => moment(date).isBefore(to) && moment(date).isAfter(from));
-
     return {
         labels: areDatesSameMonth(dates) ?
             filteredData.map(({ date }) => moment(date).format('DD')) :
@@ -28,11 +28,13 @@ const formatSolde = (solde, dates) => {
 
 export const fetchSolde = (dates) => {
     const soldes = soldeFromJSON;
+    // Here I just take it from json file. So I don't need async/await, but if we have a back I should have use it
     const formatedSoldeData = formatSolde(soldes, dates);
     return formatedSoldeData;
 }
 
 const getMostRecentSold = (soldes) => {
+    // Function to get the most recent sold, and calculate the variation. This should not be necessary, cause this datas should come from backend. 
     const now = moment().format('YYYY-MM-DD');
     const yesterday = moment().subtract(1, 'days').format('YYYY-MM-DD');
     const currentSolde = soldes.find(({ date }) => moment(date).format('YYYY-MM-DD') === now).amount;
@@ -43,8 +45,9 @@ const getMostRecentSold = (soldes) => {
 
 export const fetchCurrentSold = () => {
     const soldes = soldeFromJSON;
+    // Here I just take it from json file. So I don't need async/await, but if we have a back I should have use it
     return getMostRecentSold(soldes)
-    //We suppose that this data come directly from the back, but, in order to show something, I use a little function to calculate current solde and variation
+    // We suppose that this data come directly from the back, but, in order to show something, I use a little function to calculate current solde and variation
 }
 
 export const fetchRepartition = () => {
@@ -61,4 +64,5 @@ export const fetchRepartition = () => {
             }
         ]
     };
+    // I don't have data for this, so I just write the data. But, we should get it from backend and transform them to use with chartjs
 }
