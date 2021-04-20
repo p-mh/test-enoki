@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { Line } from 'react-chartjs-2';
+import { Line, Doughnut } from 'react-chartjs-2';
 import moment from 'moment';
 
 import Info from './Info'
 
 import { Page, PageTitle } from "./generalStyle"
-import { DashboardTitleContainer, DashboardTitle, CurrentSolde, Variation, DatePickers, DatePicker } from './dashboardStyled'
+import { DashboardTitleContainer, DashboardTitle, DashBoardFirstPart, CurrentSoldeContainer, CurrentSolde, Variation, RepartitionContainer, DatePickers, DatePicker } from './dashboardStyled'
 
-import { fetchSolde, fetchCurrentSold } from '../services/solde'
+import { fetchSolde, fetchCurrentSold, fetchRepartition } from '../services/solde'
 
 export default class Dashboard extends Component {
     state = {
@@ -18,7 +18,8 @@ export default class Dashboard extends Component {
         },
         soldes: {},
         currentSolde: 0,
-        variation: 0
+        variation: 0,
+        repartition: {}
     }
 
     componentDidMount() {
@@ -29,12 +30,14 @@ export default class Dashboard extends Component {
     getSoldes = () => {
         const { selectedDate } = this.state;
         const soldes = fetchSolde(selectedDate);
-        const {currentSolde, variation} = fetchCurrentSold();
+        const { currentSolde, variation } = fetchCurrentSold();
+        const repartition = fetchRepartition();
         this.setState({
             isLoading: false,
             soldes,
             currentSolde,
-            variation
+            variation,
+            repartition
         })
     }
 
@@ -49,22 +52,46 @@ export default class Dashboard extends Component {
     }
 
     render() {
-        const { isLoading, soldes, selectedDate: { from, to }, currentSolde, variation } = this.state;
+        const { isLoading, soldes, selectedDate: { from, to }, currentSolde, variation, repartition } = this.state;
+        const repartitionChartOptions = {
+            legend: {
+                display: true,
+                position: 'right',
+                labels: {
+                    fontSize: 17,
+                    padding: 40
+                },
+                layout: {
+                    padding: 100
+                }
+            }
+      };
         return (
             <Page>
                 <PageTitle>Dashboard</PageTitle>
-                <div>
-                    <DashboardTitleContainer>
-                        <DashboardTitle>Solde</DashboardTitle>
-                        <Info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dolor elit.</Info>
-                    </DashboardTitleContainer>
-                    <CurrentSolde>{currentSolde} $</CurrentSolde>
-                    <div><Variation isPositive={variation && variation.charAt(0) === "+"}>{variation}</Variation></div>
-                </div>
+                <DashBoardFirstPart>
+                    <CurrentSoldeContainer>
+                        <DashboardTitleContainer>
+                            <DashboardTitle>Solde</DashboardTitle>
+                            <Info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dolor elit.</Info>
+                        </DashboardTitleContainer>
+                        <CurrentSolde>{currentSolde} $</CurrentSolde>
+                        <div>
+                            <Variation isPositive={variation && variation.charAt(0) === "+"}>{variation}</Variation>
+                        </div>
+                    </CurrentSoldeContainer>
+                    <RepartitionContainer>
+                        <DashboardTitleContainer>
+                            <DashboardTitle>Repartition</DashboardTitle>
+                            <Info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dolor elit.</Info>
+                        </DashboardTitleContainer>
+                        {(isLoading && "Loading...") || <Doughnut data={repartition} options={repartitionChartOptions} height="100"/>}
+                    </RepartitionContainer>
+                </DashBoardFirstPart>
                 <DashboardTitleContainer>
-                        <DashboardTitle>Portfolio evolution</DashboardTitle>
-                        <Info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dolor elit.</Info>
-                    </DashboardTitleContainer>
+                    <DashboardTitle>Portfolio evolution</DashboardTitle>
+                    <Info>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dolor elit.</Info>
+                </DashboardTitleContainer>
                 <DatePickers>
                     From
                     <DatePicker type="date" value={from} max={to} onChange={({ target: { value } }) => this.changeDate(value, "from")} />

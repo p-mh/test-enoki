@@ -32,16 +32,33 @@ export const fetchSolde = (dates) => {
     return formatedSoldeData;
 }
 
-const getMostRecentSold = (soldes) => { 
+const getMostRecentSold = (soldes) => {
     const now = moment().format('YYYY-MM-DD');
     const yesterday = moment().subtract(1, 'days').format('YYYY-MM-DD');
-    const currentSolde = soldes.find(({date}) => moment(date).format('YYYY-MM-DD') === now).amount;
-    const yeasterdaySolde = soldes.find(({date}) => moment(date).format('YYYY-MM-DD') === yesterday).amount;
-    const variation = `${(((yeasterdaySolde - currentSolde)/currentSolde) * 100).toFixed(2)}%`
-    return {currentSolde, variation}
+    const currentSolde = soldes.find(({ date }) => moment(date).format('YYYY-MM-DD') === now).amount;
+    const yeasterdaySolde = soldes.find(({ date }) => moment(date).format('YYYY-MM-DD') === yesterday).amount;
+    const variation = `${(((yeasterdaySolde - currentSolde) / currentSolde) * 100).toFixed(2)}%`
+    return { currentSolde, variation }
 }
 
 export const fetchCurrentSold = () => {
     const soldes = soldeFromJSON;
-    return getMostRecentSold(soldes) //We suppose that this data come directly from the back, but, in order to show something, I use a little function to calculate current solde and variation
+    return getMostRecentSold(soldes)
+    //We suppose that this data come directly from the back, but, in order to show something, I use a little function to calculate current solde and variation
+}
+
+export const fetchRepartition = () => {
+    return {
+        labels: ['BTC - Bitcoin', 'AMZN - Amazon stock', 'NVDA - NVIDIA', 'GOOGL - Google stcok', 'ETH - Etherum', 'Other'],
+        datasets: [
+            {
+                label: '',
+                data: [40, 20, 10, 15, 7, 3],
+                backgroundColor: ['rgba(93, 91, 228, 1)', 'rgba(93, 91, 228, 0.8)', 'rgba(93, 91, 228, 0.6)', 'rgba(93, 91, 228, 0.4)', 'rgba(93, 91, 228, 0.2)', 'rgba(93, 91, 228, 0.1)'],
+                borderColor: 'rgb(28, 28, 30)',
+                borderWidth: 10,
+                position: 'right',
+            }
+        ]
+    };
 }
